@@ -4,7 +4,10 @@ import (
 	"testing"
 )
 
+var inputPath = "larger.input"
+
 func BenchmarkKwTab(b *testing.B) {
+	initInputs(inputPath)
 	t := initTab()
 	b.ResetTimer()
 
@@ -19,6 +22,7 @@ func BenchmarkKwTab(b *testing.B) {
 }
 
 func BenchmarkKwTab1(b *testing.B) {
+	initInputs(inputPath)
 	t := initTab()
 	b.ResetTimer()
 
@@ -33,6 +37,7 @@ func BenchmarkKwTab1(b *testing.B) {
 }
 
 func BenchmarkKwTab2(b *testing.B) {
+	initInputs(inputPath)
 	t := initTab()
 	b.ResetTimer()
 
@@ -47,6 +52,7 @@ func BenchmarkKwTab2(b *testing.B) {
 }
 
 func BenchmarkKwTab3(b *testing.B) {
+	initInputs(inputPath)
 	t := initTab()
 	b.ResetTimer()
 
@@ -61,6 +67,7 @@ func BenchmarkKwTab3(b *testing.B) {
 }
 
 func BenchmarkKwTab4(b *testing.B) {
+	initInputs(inputPath)
 	t := initTab()
 	b.ResetTimer()
 
@@ -75,6 +82,7 @@ func BenchmarkKwTab4(b *testing.B) {
 }
 
 func BenchmarkBinTab(b *testing.B) {
+	initInputs(inputPath)
 	t := initBinTab()
 	b.ResetTimer()
 
@@ -89,12 +97,13 @@ func BenchmarkBinTab(b *testing.B) {
 }
 
 func BenchmarkKvBinTab(b *testing.B) {
+	initInputs(inputPath)
 	t := initKvBinTab()
 	b.ResetTimer()
 
 	n := 0
 	for i := 0; i < b.N; i++ {
-		for _, lex := range input {
+		for _, lex := range bytesInput {
 			if _, ok := t.Lookup(lex); ok {
 				n++
 			}
@@ -103,6 +112,7 @@ func BenchmarkKvBinTab(b *testing.B) {
 }
 
 func BenchmarkMap(b *testing.B) {
+	initInputs(inputPath)
 	t := map[string]Token{
 		"IF":        TokKwIf,
 		"DO":        TokKwDo,
