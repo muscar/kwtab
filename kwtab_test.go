@@ -6,81 +6,6 @@ import (
 
 var inputPath = "larger.input"
 
-func BenchmarkKwTab(b *testing.B) {
-	initInputs(inputPath)
-	t := initTab()
-	b.ResetTimer()
-
-	n := 0
-	for i := 0; i < b.N; i++ {
-		for _, lex := range input {
-			if _, ok := t.Lookup(lex); ok {
-				n++
-			}
-		}
-	}
-}
-
-func BenchmarkKwTab1(b *testing.B) {
-	initInputs(inputPath)
-	t := initTab()
-	b.ResetTimer()
-
-	n := 0
-	for i := 0; i < b.N; i++ {
-		for _, lex := range input {
-			if _, ok := t.Lookup1(lex); ok {
-				n++
-			}
-		}
-	}
-}
-
-func BenchmarkKwTab2(b *testing.B) {
-	initInputs(inputPath)
-	t := initTab()
-	b.ResetTimer()
-
-	n := 0
-	for i := 0; i < b.N; i++ {
-		for _, lex := range input {
-			if _, ok := t.Lookup2(lex); ok {
-				n++
-			}
-		}
-	}
-}
-
-func BenchmarkKwTab3(b *testing.B) {
-	initInputs(inputPath)
-	t := initTab()
-	b.ResetTimer()
-
-	n := 0
-	for i := 0; i < b.N; i++ {
-		for _, lex := range input {
-			if _, ok := t.Lookup3(lex); ok {
-				n++
-			}
-		}
-	}
-}
-
-func BenchmarkKwTab4(b *testing.B) {
-	initInputs(inputPath)
-	t := initTab()
-	b.ResetTimer()
-
-	n := 0
-	for i := 0; i < b.N; i++ {
-		for _, lex := range input {
-			if _, ok := t.Lookup4(lex); ok {
-				n++
-			}
-		}
-	}
-}
-
 func BenchmarkBinTab(b *testing.B) {
 	initInputs(inputPath)
 	t := initBinTab()
@@ -89,21 +14,6 @@ func BenchmarkBinTab(b *testing.B) {
 	n := 0
 	for i := 0; i < b.N; i++ {
 		for _, lex := range input {
-			if _, ok := t.Lookup(lex); ok {
-				n++
-			}
-		}
-	}
-}
-
-func BenchmarkKvBinTab(b *testing.B) {
-	initInputs(inputPath)
-	t := initKvBinTab()
-	b.ResetTimer()
-
-	n := 0
-	for i := 0; i < b.N; i++ {
-		for _, lex := range bytesInput {
 			if _, ok := t.Lookup(lex); ok {
 				n++
 			}
